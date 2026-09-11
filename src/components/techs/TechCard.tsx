@@ -10,10 +10,12 @@ interface ItechCardProps {
 }
 
 const TechCard = ({ tech, isSelected, setIsSelected }: ItechCardProps) => {
-  const [isAdd, setIsAdd] = useState(false);
+  const isAdd = isSelected.some((item) => item.name === tech.name);
 
   const handleSelectePlayer = () => {
-    setIsAdd(true);
+   if (isAdd) {
+    return;
+   }
 
     //selected techs
     setIsSelected([...isSelected, tech]);
