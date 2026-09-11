@@ -16,26 +16,31 @@ const SelectedTech = ({ isSelected, setIsSelected }: iSelectProps) => {
     toast.info(`${techToRemove.name} removed from your stack!`);
   };
 
-  const handleRemoveAll = () =>{
+  const handleRemoveAll = () => {
     setIsSelected([]);
-    if(isSelected.length !== 0)
-    {toast.info("All technologies removed from your stack!");}
-    else{
-        toast.warning("Your stack is already empty!");
+    if (isSelected.length !== 0) {
+      toast.info("All technologies removed from your stack!");
+    } else {
+      toast.warning("Your stack is already empty!");
     }
-
-}
+  };
   return (
     <div>
-      <div className="card w-96 bg-base-100 card-xs shadow-sm">
+      <div className="card w-96 bg-base-100 card-xs shadow-sm px-2 py-2">
         <h2 className="font-bold py-2 px-2">Your Stack</h2>
-
-        <div className="container mx-auto ">
+        <div className="container mx-auto">
           {isSelected.length === 0 ? (
             <div>
               <p className="text-sm text-slate-500 px-2">
-                Your stack is empty.
+                No technology selected Yet.
               </p>
+              <div className="flex justify-center items-center mt-3">
+                <div className="card w-96 bg-base-100 shadow-sm border border-slate-200">
+                  <p className="flex justify-center items-center text-sm text-slate-500 px-2 py-6">
+                    Your stack is empty.
+                  </p>
+                </div>
+              </div>
             </div>
           ) : (
             <>
@@ -72,16 +77,16 @@ const SelectedTech = ({ isSelected, setIsSelected }: iSelectProps) => {
                   </div>
                 );
               })}
+
+              {/* Remove All Button */}
+              <button
+                className="btn btn-sm btn-outline btn-error mt-2 flex justify-center items-center gap-2 w-full rounded-2xl"
+                onClick={() => handleRemoveAll()}
+              >
+                Remove All
+              </button>
             </>
           )}
-
-          {/* Remove All Button */}
-          <button
-            className="btn btn-sm btn-outline btn-error mt-2 flex justify-center items-center gap-2 w-full rounded-2xl"
-            onClick={() => handleRemoveAll()}
-          >
-            Remove All
-          </button>
         </div>
       </div>
     </div>
