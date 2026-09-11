@@ -9,7 +9,7 @@ interface ItechProps {
 const Tech = ({ techPromise }: ItechProps) => {
   // console.log(techPromise, "from tech ");
 
-
+    const [isSelected, setIsSelected] = useState<Itech[]>([]);
 
   const techs = use(techPromise);
   console.log(techs, "tech");
@@ -29,10 +29,10 @@ const Tech = ({ techPromise }: ItechProps) => {
 
       <div className="flex flex-col md:flex-row gap-6">
         <div>
-          <AvailableTech techs={techs}></AvailableTech>
+          <AvailableTech techs={techs} isSelected={isSelected} setIsSelected={setIsSelected}></AvailableTech>
         </div>
         <div>
-          <SelectedTech techs={techs}></SelectedTech>
+          <SelectedTech techs={techs} isSelected={isSelected} setIsSelected={setIsSelected}></SelectedTech>
         </div>
       </div>
     </div>
