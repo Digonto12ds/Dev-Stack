@@ -1,4 +1,4 @@
-import React, { use } from "react";
+import React, { use, useState } from "react";
 import type { Itech } from "../../type/TypeTech";
 import AvailableTech from "./AvailableTech";
 import SelectedTech from "./SelectedTech";
@@ -8,6 +8,9 @@ interface ItechProps {
 
 const Tech = ({ techPromise }: ItechProps) => {
   // console.log(techPromise, "from tech ");
+
+
+
   const techs = use(techPromise);
   console.log(techs, "tech");
   return (
@@ -24,12 +27,12 @@ const Tech = ({ techPromise }: ItechProps) => {
         </p>
       </div>
 
-      <div className="flex gap-6">
+      <div className="flex flex-col md:flex-row gap-6">
         <div>
           <AvailableTech techs={techs}></AvailableTech>
         </div>
         <div>
-          <SelectedTech></SelectedTech>
+          <SelectedTech techs={techs}></SelectedTech>
         </div>
       </div>
     </div>

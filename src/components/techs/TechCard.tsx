@@ -1,12 +1,20 @@
-import React from "react";
+import React, { useState, type Dispatch, type SetStateAction } from "react";
 import type { Itech } from "../../type/TypeTech";
 import { FaStar } from "react-icons/fa";
 
 interface ItechCardProps {
-  tech: Itech;
+  tech: Itech,
+
 }
 
-const TechCard = ({ tech }: ItechCardProps) => {
+const TechCard = ({tech}: ItechCardProps) =>{
+     
+    const [isSelected, setIsSelected] = useState(false);
+
+
+    const handleSelectePlayer  = () =>{
+        setIsSelected(true);
+    }
   return (
     <div>
       <div className="card bg-base-100 w-full shadow-sm border border-slate-200">
@@ -21,7 +29,7 @@ const TechCard = ({ tech }: ItechCardProps) => {
           <p className="text-slate-600">{tech.description}</p>
 
         {/* //! category,difficulty,ratting */}
-          <div className="flex justify-between items-center">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
                 <div className="mt-2">
                 <span className="badge badge-outline">{tech.category}</span>
                 </div>
@@ -38,9 +46,12 @@ const TechCard = ({ tech }: ItechCardProps) => {
           </div>
 
           <div className="card-action mt-4">
-            <button className="btn btn-primary w-full bg-black rounded-2xl">
-              Add to Stack
+            <button onClick={()=> handleSelectePlayer ()}
+            className="btn btn-primary w-full bg-black rounded-2xl"
+            disabled={isSelected}>
+              {isSelected === true? "Added to Stack" : "Add to Stack"  }
             </button>
+           
           </div>
         </div>
       </div>
