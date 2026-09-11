@@ -7,7 +7,7 @@ interface IAvailableProps{
 }
 
 const AvailableTech = ({techs}:IAvailableProps)=> {
-    return <div>
+    return <div className='grid grid-cols-3 gap-4'>
           {
                 techs.map((tech : Itech, index : number) =>{
                     return <div>
