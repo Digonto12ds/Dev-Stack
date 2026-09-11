@@ -1,4 +1,4 @@
-import React, { type Dispatch, type SetStateAction } from "react";
+import { type Dispatch, type SetStateAction } from "react";
 import type { Itech } from "../../type/TypeTech";
 import { RxCross1 } from "react-icons/rx";
 import { toast } from "react-toastify";
@@ -47,7 +47,7 @@ const SelectedTech = ({ isSelected, setIsSelected }: iSelectProps) => {
               <p className="text-sm text-slate-500 px-2">
                 {isSelected.length} Technology Selected
               </p>
-              {isSelected.map((tech: Itech, index: number) => {
+              {isSelected.map((tech: Itech) => {
                 return (
                   <div className="flex justify-between items-center gap-4 py-2 px-2">
                     <div className="flex justify-between items-center gap-4">

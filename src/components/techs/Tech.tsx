@@ -1,4 +1,4 @@
-import React, { use, useState } from "react";
+import { use, useState } from "react";
 import type { Itech } from "../../type/TypeTech";
 import AvailableTech from "./AvailableTech";
 import SelectedTech from "./SelectedTech";

@@ -1,7 +1,6 @@
-import React, { useState, type Dispatch, type SetStateAction } from "react";
+import { type Dispatch, type SetStateAction } from "react";
 import type { Itech } from "../../type/TypeTech";
 import { FaStar } from "react-icons/fa";
-import SelectedTech from "./SelectedTech";
 import { toast } from "react-toastify";
 
 interface ItechCardProps {
@@ -14,10 +13,10 @@ const TechCard = ({ tech, isSelected, setIsSelected }: ItechCardProps) => {
   const isAdd = isSelected.some((item) => item.name === tech.name);
 
   const handleSelectePlayer = () => {
-   if (isAdd) {
-    toast.warning("This technology is already in your stack!");
-    return;
-   }
+    if (isAdd) {
+      toast.warning("This technology is already in your stack!");
+      return;
+    }
 
     //selected techs
     setIsSelected([...isSelected, tech]);
@@ -37,27 +36,22 @@ const TechCard = ({ tech, isSelected, setIsSelected }: ItechCardProps) => {
           <p className="text-slate-600">{tech.description}</p>
 
           {/* //! category,difficulty,ratting */}
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <div className="mt-2">
-              <span className="badge badge-outline">{tech.category}</span>
-            </div>
+          <div className="flex flex-wrap justify-between items-center gap-2 mt-3">
+            <span className="badge badge-outline">{tech.category}</span>
 
-            <div className="flex justify-between items-center mt-3">
-              <p className="text-sm text-slate-500">{tech.difficulty}</p>
-            </div>
-            <div>
-              <p className="font-semibold flex items-center gap-2">
-                <FaStar color="yellow" />
-                {tech.rating}
-              </p>
-            </div>
+            <span className="text-sm text-slate-500">{tech.difficulty}</span>
+
+            <span className="font-semibold flex items-center gap-1">
+              <FaStar color="yellow" />
+              {tech.rating}
+            </span>
           </div>
 
           <div className="card-action mt-4">
             <button
               onClick={() => handleSelectePlayer()}
               className={`btn btn-primary w-full bg-black rounded-2xl ${isAdd ? "bg-clip-text text-transparent bg-gradient-to-r from-orange-500 via-pink-500 to-violet-500" : ""}`}
-            //   disabled={isAdd} becasu of this the tostify is not working properly
+              //   disabled={isAdd} becasu of this the tostify is not working properly
             >
               {isAdd === true ? "✓ Added to Stack" : "Add to Stack"}
             </button>
