@@ -1,6 +1,7 @@
 import React, { useState, type Dispatch, type SetStateAction } from "react";
 import type { Itech } from "../../type/TypeTech";
 import { FaStar } from "react-icons/fa";
+import SelectedTech from "./SelectedTech";
 
 interface ItechCardProps {
   tech: Itech;
