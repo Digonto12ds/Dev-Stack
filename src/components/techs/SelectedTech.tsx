@@ -1,20 +1,30 @@
 import React, { type Dispatch, type SetStateAction } from "react";
 import type { Itech } from "../../type/TypeTech";
 import { RxCross1 } from "react-icons/rx";
+import { toast } from "react-toastify";
 interface iSelectProps {
-  tech: Itech;
   isSelected: Itech[];
   setIsSelected: Dispatch<SetStateAction<Itech[]>>;
 }
 
-const SelectedTech = ({ tech, isSelected, setIsSelected }: iSelectProps) => {
+const SelectedTech = ({ isSelected, setIsSelected }: iSelectProps) => {
   const handleRemoveTech = (techToRemove: Itech) => {
     const resttechs = isSelected.filter(
       (t: Itech) => t.name !== techToRemove.name,
     );
     setIsSelected(resttechs);
+    toast.info(`${techToRemove.name} removed from your stack!`);
   };
 
+  const handleRemoveAll = () =>{
+    setIsSelected([]);
+    if(isSelected.length !== 0)
+    {toast.info("All technologies removed from your stack!");}
+    else{
+        toast.warning("Your stack is already empty!");
+    }
+
+}
   return (
     <div>
       <div className="card w-96 bg-base-100 card-xs shadow-sm">
@@ -68,7 +78,7 @@ const SelectedTech = ({ tech, isSelected, setIsSelected }: iSelectProps) => {
           {/* Remove All Button */}
           <button
             className="btn btn-sm btn-outline btn-error mt-2 flex justify-center items-center gap-2 w-full rounded-2xl"
-            onClick={() => setIsSelected([])}
+            onClick={() => handleRemoveAll()}
           >
             Remove All
           </button>

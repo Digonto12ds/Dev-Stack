@@ -12,13 +12,12 @@ const Tech = ({ techPromise }: ItechProps) => {
     const [isSelected, setIsSelected] = useState<Itech[]>([]);
 
   const techs = use(techPromise);
-  console.log(techs, "tech");
   return (
     <div className="container mx-auto">
       <div>
         <h3 className="text-3xl md:text-4xl font-bold text-slate-900">
           Explore the{" "}
-          <span className="bg-gradient-to-r from-pink-500 via-pink-500 to-violet-500 bg-clip-text text-transparent">
+          <span className="bg-clip-text text-transparent" style={{ backgroundImage: "var(--brand-gradient)" }}>
             Technologies
           </span>
         </h3>
@@ -32,7 +31,7 @@ const Tech = ({ techPromise }: ItechProps) => {
           <AvailableTech techs={techs} isSelected={isSelected} setIsSelected={setIsSelected}></AvailableTech>
         </div>
         <div>
-          <SelectedTech techs={techs} isSelected={isSelected} setIsSelected={setIsSelected}></SelectedTech>
+          <SelectedTech isSelected={isSelected} setIsSelected={setIsSelected}></SelectedTech>
         </div>
       </div>
     </div>

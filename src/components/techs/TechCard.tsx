@@ -2,6 +2,7 @@ import React, { useState, type Dispatch, type SetStateAction } from "react";
 import type { Itech } from "../../type/TypeTech";
 import { FaStar } from "react-icons/fa";
 import SelectedTech from "./SelectedTech";
+import { toast } from "react-toastify";
 
 interface ItechCardProps {
   tech: Itech;
@@ -14,11 +15,13 @@ const TechCard = ({ tech, isSelected, setIsSelected }: ItechCardProps) => {
 
   const handleSelectePlayer = () => {
    if (isAdd) {
+    toast.warning("This technology is already in your stack!");
     return;
    }
 
     //selected techs
     setIsSelected([...isSelected, tech]);
+    toast.success(`${tech.name} added to your stack!`);
   };
   return (
     <div>
@@ -53,10 +56,10 @@ const TechCard = ({ tech, isSelected, setIsSelected }: ItechCardProps) => {
           <div className="card-action mt-4">
             <button
               onClick={() => handleSelectePlayer()}
-              className="btn btn-primary w-full bg-black rounded-2xl"
-              disabled={isAdd}
+              className={`btn btn-primary w-full bg-black rounded-2xl ${isAdd ? "bg-clip-text text-transparent bg-gradient-to-r from-orange-500 via-pink-500 to-violet-500" : ""}`}
+            //   disabled={isAdd} becasu of this the tostify is not working properly
             >
-              {isAdd === true ? "Added to Stack" : "Add to Stack"}
+              {isAdd === true ? "✓ Added to Stack" : "Add to Stack"}
             </button>
           </div>
         </div>
