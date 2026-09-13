@@ -49,7 +49,7 @@ const SelectedTech = ({ isSelected, setIsSelected }: iSelectProps) => {
               </p>
               {isSelected.map((tech: Itech) => {
                 return (
-                  <div className="flex justify-between items-center gap-4 py-2 px-2">
+                  <div key={tech.name} className="flex justify-between items-center gap-4 py-2 px-2">
                     <div className="flex justify-between items-center gap-4">
                       <div>
                         <img
